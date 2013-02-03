@@ -1,3 +1,19 @@
+/*
+
+Copyright (C) 2012 Arthur Breitman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
 #define TAIL_LIMIT  2.983851594898812
 #define EXPTLOVTL  0.00390733345803262
 #define LOG_TAIL_LIMIT  1.09321494749176
@@ -170,12 +186,8 @@ public:
 
 		if ( a == -infinity && b == infinity )
 			return NAN;		
-		else {
-			double z = sigma * truncate2(a,b) + mu;
-			if ( z < aa - 0.0000001|| z > bb +  0.0000001 )
-				std::cout << "truncated failed big time! " << z << " not in [" << aa << ", " << bb << "] mu=" << mu << " sigma=" << sigma <<  std::endl;
-			return z;
-		}		
+		else
+			return  sigma * truncate2(a,b) + mu;				
 	}
 			
 	// creates the object by initializing the arrays we will need
